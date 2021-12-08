@@ -1,0 +1,71 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- ask_weather:
+    use_entities: true
+- specific_city_weather:
+    use_entities: true
+- cites:
+    use_entities: true
+- give_name:
+    use_entities: true
+- names:
+    use_entities: true
+- recieve_from_bot:
+    use_entities: true
+entities:
+- city
+- user_name
+slots:
+  city:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  user_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Hey! I'm a weather bot. What is your name?
+  - text: Hi! I'm a weather bot. How can I call you?
+  utter_inquire:
+  - text: Nice to meet you {user_name}. What can I do for you?
+  - text: Hi {user_name}. How may i assist you?
+  utter_loop:
+  - text: Need anything else ?
+  - text: Is that all ?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_ask_location:
+  - text: which city you want to check for?
+  - text: In what location?
+  utter_greet_bot:
+  - text: Hi weather bot how are you ?
+actions:
+- utter_inquire
+- utter_loop
+- utter_greet
+- utter_happy
+- utter_goodbye
+- action_weather
+- utter_ask_location
+- action_great_back
+forms: {}
+e2e_actions: []

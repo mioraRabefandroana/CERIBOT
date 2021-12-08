@@ -1,0 +1,360 @@
+version: "2.0"
+stories:
+- story: Generated Story 3320800183399695936
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: italy
+  - slot_was_set:
+    - location: italy
+  - action: action_weather
+  - slot_was_set:
+    - location: italy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story -3351152636827275381
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story 8921121480760034253
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_001
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_002
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: Paris
+  - slot_was_set:
+    - location: Paris
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_003
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: Vilnius
+  - slot_was_set:
+    - location: Vilnius
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_004
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: Italy
+  - slot_was_set:
+    - location: Italy
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_005
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: Lithuania
+  - slot_was_set:
+    - location: Lithuania
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: dublin
+  - slot_was_set:
+    - location: dublin
+  - action: action_weather
+  - slot_was_set:
+    - location: dublin
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: berlin
+  - slot_was_set:
+    - location: berlin
+  - action: action_weather
+  - slot_was_set:
+    - location: berlin
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: inform
+  - intent: goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: dublin
+  - slot_was_set:
+    - location: dublin
+  - action: action_weather
+  - slot_was_set:
+    - location: dublin
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: mumbai
+  - slot_was_set:
+    - location: mumbai
+  - action: action_weather
+  - slot_was_set:
+    - location: mumbai
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: goa
+  - slot_was_set:
+    - location: goa
+  - action: action_weather
+  - slot_was_set:
+    - location: goa
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: mumbai
+  - slot_was_set:
+    - location: mumbai
+  - action: action_weather
+  - slot_was_set:
+    - location: mumbai
+  - intent: greet
+  - intent: goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: goa
+  - slot_was_set:
+    - location: goa
+  - action: action_weather
+  - slot_was_set:
+    - location: goa
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: berlin
+  - slot_was_set:
+    - location: berlin
+  - action: action_weather
+  - slot_was_set:
+    - location: berlin
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - location: sydney
+  - slot_was_set:
+    - location: sydney
+  - action: action_weather
+  - slot_was_set:
+    - location: sydney
+  - intent: goodbye
+  - action: utter_goodbye
+- story: New Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_weather
+  - slot_was_set:
+    - location: chennai
+  - intent: goodbye
+  - action: utter_goodbye

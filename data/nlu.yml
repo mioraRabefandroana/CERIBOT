@@ -1,0 +1,120 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: names
+  examples: |
+    - [Jhnon](user_name)
+    - [Carole](user_name)
+    - [Franck](user_name)
+    - [Noeli](user_name)
+    - [Mark](user_name)
+    - [Karl](user_name)
+    
+- intent: give_name
+  examples: |
+    - My name is [Jhnon](user_name).
+    - [Carole](user_name)
+    - I'm [Ali](user_name)
+    - [Ali](user_name)
+    - [Abdoulaye](user_name)
+    - Name is [Franck](user_name)
+    - I'm [Jhon](user_name)
+    - [Carole](user_name)
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - thanks bye
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: cites
+  examples: | 
+    - [delhi](city)
+    - [chandigarh](city)
+    - [london](city)
+    - [berlin](city)
+    - [ohio](city)
+    - [france](city)
+    - [bangalore](city)
+    - [mumbai](city)
+    - [jaipur](city)
+
+- intent: ask_weather
+  examples: |
+    - what's the weather like today ?
+    - give me the weather please
+    - what's the weather ?
+    - what's the weather today ? 
+    - what's the temperature ?
+    - I want to know the temperature 
+    - I want to know the weather
+    - how's the weather today ?
+    - give me the temperature
+    - how's the temperature today ?
+
+- intent: specific_city_weather
+  examples: | 
+    - what's the weather in [Paris](city) ?
+    - the temperature in [Avignon](city)
+    - how is the temperature in [Berlin](city)
+    - how's the weather today in [Padova](city) ?
+    - how is [Munich](city) today ?
+    - what's the weather like in [Tokyo](city)
+    - tell me the temperature in [Parakou](city)
+    - weather at [Genovia](city)
+    - temperature at [Prague](city)
+    - want to know the temperature in [vienna](city) today
+
+
+- intent: recieve_from_bot
+  examples: | 
+    - send Hi to mood bot
+    - call mood bot
+    - mood bot
+    - mood
+    - bot mood
+    - Hey mood bot
