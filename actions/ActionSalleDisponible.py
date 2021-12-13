@@ -51,19 +51,15 @@ class ActionSalleDisponible(Action):
         msg = INTRO_SALLE_DISPONIBLE
         for salle in self.results:
             msg += salle["libelle"]+".\n"
-            # msg += salle["libelle"]+".\n"
-            # print(salle)
+            
         return msg
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         print("----action_classroom_availability-----")
-
-
         
         url = BASE_URL + "api/salles/disponibilite"
-        # url = "https://edt-api.univ-avignon.fr/app.php/api/salles/disponibilite?site=CERI&duree=3&debut=10.30&date=2021-12-13"
         requestData = {
             "site": "CERI",
             "date": "2021-12-13",
@@ -75,20 +71,7 @@ class ActionSalleDisponible(Action):
         self.set_result( data )
 
 
-        # TODO : récupérer les paramètres via les slots
-        # date = 
-        # debut = 
-        # duree = 
-        # personName = tracker.get_slot('name')
-        # res = urllib.request.urlopen(url)
-        # self.encoding = res.info().get_content_charset('utf-8')
-        # with res as response:
-        #     data = response.read()
-        #     data = json.loads(data.decode(self.encoding))
-        #     self.set_result( data )
-
         dispatcher.utter_message(self.get_result_message())
 
-        # return [{"edt": "voici le résultat"}]
         # return [SlotSet("name", personName)]
         return []
