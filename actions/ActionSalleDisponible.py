@@ -1,38 +1,9 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-
 from typing import Any, Dict, List, Text
 from actions.utils.custom_url_request import BASE_URL, send_request
 from utils.custom_messages import INTRO_SALLE_DISPONIBLE, NO_CLASSROOM_AVAILABLE
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
-import urllib.request
-import json
+import re
 
 class ActionSalleDisponible(Action):
     def name(self) -> Text:
@@ -50,9 +21,17 @@ class ActionSalleDisponible(Action):
         
         msg = INTRO_SALLE_DISPONIBLE
         for salle in self.results:
-            msg += salle["libelle"]+".\n"
+            libelle = salle["libelle"]
+            msg += self.speakable_salle_libelle(libelle) + ",\n"
             
         return msg
+    
+    def speakable_salle_libelle(self, libelle):
+        libelle = re.sub(r'^s',"salle ", libelle)
+        libelle = re.sub(r'=',".",libelle)
+        libelle = re.sub(r' 0'," ",libelle)
+        return libelle
+
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
