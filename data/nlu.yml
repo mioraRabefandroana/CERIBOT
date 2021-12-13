@@ -97,6 +97,7 @@ nlu:
     - my time table
     - plan
     - edt
+    - emploi du temps
 
 - intent: intent_classroom_availability
   examples: |
