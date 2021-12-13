@@ -8,11 +8,15 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - my_timetable
+  - intent_timetable
+
+actions:
+  - action_edt
+  - action_classroom_availability
 
 responses:
   utter_greet:
-  - text: "Salama Hey! How are you?"
+  - text: "Salama EKA. Hey! How are you?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -33,6 +37,17 @@ responses:
   utter_timetable:
   - text: "Voici ton edt : 12H00 -> Manger"
 
+  utter_repondre_bonjour:
+  - text: "Hello Doug, how are ya??"
+
+  utter_content_d_avoir_dit_bonjour:
+  - text: "That's my boy"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+slots:
+  name:
+    type: text
+    influence_conversation: false

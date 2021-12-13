@@ -92,8 +92,17 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: my_timetable
+- intent: intent_timetable
   examples: |
     - my time table
     - plan
     - edt
+
+- intent: intent_classroom_availability
+  examples: |
+    - salle disponible
+
+# - intent: dire_bonjour
+#   examples: |
+#     - Hi my name is Josh
+#     - Kaiza kaiza
