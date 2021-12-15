@@ -32,7 +32,6 @@ class ActionSalleDisponible(Action):
             
         return msg
 
-
     """
     format salle libelle into a better speakable text for NAO/Pepper
     """
@@ -42,6 +41,17 @@ class ActionSalleDisponible(Action):
         libelle = re.sub(r' 0'," ",libelle)
         return libelle
 
+    def get_site(self):
+        return "CERI"
+
+    def get_date(self):
+        return "2021-12-15"
+
+    def get_duree(self):
+        return "1.30"
+
+    def get_debut(self):
+        return "14.30"
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
@@ -49,10 +59,20 @@ class ActionSalleDisponible(Action):
         print("----action_classroom_availability-----")
         
         url = CLASSROOM_AVAILAIBILITY_URL
+
+        # TODO :  récupérer les vrais valeur des slots
+        data = {
+            "site": self.get_site(),
+            "date": self.get_date(),
+            "duree": self.get_duree(),
+            "debut": self.get_debut()
+        }
+        print(data)
+
         requestData = {
             "site": "CERI",
             "date": "2021-12-15",
-            "duree": "3",
+            "duree": "1.30",
             "debut": "14.30"
         }
 
