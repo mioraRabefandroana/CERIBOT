@@ -132,10 +132,72 @@ class ActionEdt(Action):
     """
     def extract_hour(self, value):
         return value[11:16]
+    
+    def get_niveau(self):
+        niveau = self.tracker.get_slot("niveau")
+        print("niveau0: ", niveau)
+        if(niveau is None):
+            return None
+        
+        prefix = self.get_niveau_prefix(niveau)
+        if(prefix is None):
+            return None
+        
+        suffix = self.get_niveau_suffix(niveau)
+        if(suffix is None):
+            return prefix
+        
+        niveau = prefix + suffix
+        print(">>>> niveau slot: [{}]".format(niveau))
+        
+        return niveau
+
+    """
+    try to format a given level (niveau)
+    output: 
+        - m for master, 
+        - l for licence , 
+        -else return the full level name
+    """
+    def get_niveau_prefix(self, niveau):  
+        niveauStr = "".join( re.findall("[A-Za-z]", niveau.lower()) )
+        if(not niveauStr):
+            return None
+
+        # master and licence
+        niveauPrefixes = ["m", "l"] #m : master; l: licence
+        for prefix in niveauPrefixes:
+            res = "".join( re.findall("^{0}".format(prefix), niveauStr) )
+            if(res):
+                return res        
+        
+        return niveau
+
+    """
+    try to get the level (niveau)
+        1, 2, 3
+    """
+    def get_niveau_suffix(self, niveau):        
+        niveau = niveau.lower()
+        suffix = "".join( re.findall("[0-9]", niveau) )
+        if(not suffix):
+            return None
+        return suffix
+
+
+    def get_formation(self):
+        formation = self.tracker.get_slot("formation")
+
+        # informatique
+        # if( "".join( re.findall("^info", niveauStr)) ):
+        #     return "informatique"
+        print(">>>> formation slot: [{}]".format(formation))
+        return "m1"
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
+        self.tracker = tracker
         print("----action_edt-----")
 
         # TODO : RAJOUTER LE TRAITEMENT (nettoyage) des données envoyé (<=> les phrases brutes)
@@ -155,6 +217,12 @@ class ActionEdt(Action):
         # TODO : remplacer par la valeur des slots
         niveau = "m2"
         formation = "ilsen"
+
+        print([
+            self.get_formation(),
+            self.get_niveau()
+        ])
+
 
         codeFormation, self.formationName = self.get_code_formation_by_formation_and_niveau(formation, niveau)
         # url = OPTIONS_BY_FORMATION_URL(codeFormation)
