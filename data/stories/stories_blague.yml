@@ -1,0 +1,6 @@
+# Ceci a été tranférer dans rules
+
+# - story: raconter une blague
+#   steps:
+#   - intent: raconte_blague
+#   - action: action_blague

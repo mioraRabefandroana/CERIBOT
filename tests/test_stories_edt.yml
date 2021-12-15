@@ -124,3 +124,10 @@ stories:
       donne mon emploie du temps
     intent: demande_emploie_du_temps
   - action: requete_edt
+
+  - story: demande salle dispo
+  steps:
+  - user: |
+      donne moi les salles disponible
+    intent: demande_de_salle_disponible
+  - action: action_salle_disponible

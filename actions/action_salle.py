@@ -1,25 +1,66 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-from typing import Any, Text, Dict, List
+from typing import Any, Dict, List, Text
+from utils.custom_url_request import send_request
+from utils.api_urls import CLASSROOM_AVAILAIBILITY_URL
+from utils.custom_messages import INTRO_SALLE_DISPONIBLE, NO_CLASSROOM_AVAILABLE
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
-from rasa_sdk.executor import CollectingDispatcher
+import re
 
-class ActionSALLES(Action):
-    def name(sefl) -> Text:
-        return "requete_salle"
+class ActionSalleDisponible(Action):
+    def name(self) -> Text:
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return "action_salle_disponible"
 
-            dispatcher.utter_message(text='Vous avez demander des renseignements sur une salle!')
-            return []
+    """
+    save resutls
+    """
+    def set_result(self, value):
+        self.results = value.get("results")
 
+    """
+    convert results (json format) into a readable message
+    """
+    def get_result_message(self):
+        # no available classroom
+        if(not self.results or len(self.results) == 0):
+            return NO_CLASSROOM_AVAILABLE
+        
+        msg = INTRO_SALLE_DISPONIBLE
+        for salle in self.results:
+            libelle = salle["libelle"]
+            msg += self.speakable_salle_libelle(libelle) + ",\n"
+            
+        return msg
+
+
+    """
+    format salle libelle into a better speakable text for NAO/Pepper
+    """
+    def speakable_salle_libelle(self, libelle):
+        libelle = re.sub(r'^s',"salle ", libelle)
+        libelle = re.sub(r'=',".",libelle)
+        libelle = re.sub(r' 0'," ",libelle)
+        return libelle
+
+
+    async def run(
+        self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        print("----action_classroom_availability-----")
+        
+        url = CLASSROOM_AVAILAIBILITY_URL
+        requestData = {
+            "site": "CERI",
+            "date": "2021-12-15",
+            "duree": "3",
+            "debut": "14.30"
+        }
+
+        data = send_request(url, requestData)
+        self.set_result( data )
+
+
+        dispatcher.utter_message(self.get_result_message())
+
+        # return [SlotSet("name", personName)]
+        return []

@@ -1,0 +1,5 @@
+intents:
+  - demande_de_salle_disponible
+
+actions: 
+- action_salle_disponible

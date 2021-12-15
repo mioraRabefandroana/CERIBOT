@@ -1,0 +1,5 @@
+intents:
+  - raconte_blague
+
+actions: 
+- action_blague

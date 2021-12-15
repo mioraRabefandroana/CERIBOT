@@ -40,7 +40,7 @@ stories:
   - slot_was_set:
     - niveau: M1
     - formation: ilsen
-  - action: requete_edt
+  - action: action_edt
   - action: utter_loop
 
 
@@ -59,7 +59,7 @@ stories:
     - formation: informatique
   - slot_was_set:
     - formation: informatique
-  - action: requete_edt
+  - action: action_edt
   - action: utter_loop
 
 

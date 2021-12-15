@@ -1,0 +1,4 @@
+nlu:
+- intent: raconte_blague
+  examples: |
+    - raconte moi une blague
