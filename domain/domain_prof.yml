@@ -1,0 +1,12 @@
+version: "2.0"
+
+intents:
+  - demande_info_prof
+
+responses:
+  utter_demande_nom_prof:
+    - text: "Quel est le nom du prof !"
+    
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

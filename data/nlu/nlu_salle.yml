@@ -1,0 +1,8 @@
+version: "2.0"
+
+nlu:
+- intent: demande_info_salle
+  examples: |
+    - Quelle sont les salles disponibles !
+    - Est-ce qu'il y des salles disponibles ?
+    - Une salle est-il disponibles ?

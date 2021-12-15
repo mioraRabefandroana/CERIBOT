@@ -1,0 +1,38 @@
+version: "2.0"
+
+intents:
+  - salutation
+  - aurevoir
+  - affirmation
+  - negation
+  - bonne_humeur
+  - mauvaise_humeur
+  - bot_challenge
+
+
+responses:
+  utter_salutation:
+  - text: "Salut! Comment allez-vous ?"
+
+  utter_remonter_le_morale:
+  - text: "Voici quelque chose pour vous remonter le moral:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_demande_aide_valide:
+  - text: "Est-ce que cela vous a aidé ?"
+
+  utter_joyeux:
+  - text:  "Super, content de l'apprendre !"
+
+  utter_aurevoir:
+  - text: "aurevoir!"
+
+  utter_iamabot:
+  - text: "Je suis un bot, créé par Rasa."
+
+  utter_loop:
+  - text: "Ce sera tout ?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
