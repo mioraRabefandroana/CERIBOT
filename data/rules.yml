@@ -22,3 +22,8 @@ rules:
   - intent: intent_classroom_availability
   - action: action_classroom_availability
   # - action: utter_timetable
+
+- rule: say joke
+  steps:
+  - intent: intent_joke
+  - action: action_joke

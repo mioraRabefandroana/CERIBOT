@@ -13,6 +13,7 @@ intents:
 actions:
   - action_edt
   - action_classroom_availability
+  - action_joke
 
 responses:
   utter_greet:

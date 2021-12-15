@@ -3,7 +3,6 @@ import urllib.request
 import json
 
 def send_request(url, data):
-
     try:
         if(data is not None) and (len(data)>0):
             dataArray = []

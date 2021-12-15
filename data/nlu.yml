@@ -103,6 +103,10 @@ nlu:
   examples: |
     - salle disponible
 
+- intent: intent_joke
+  examples: |
+    - raconte moi une blague
+
 # - intent: dire_bonjour
 #   examples: |
 #     - Hi my name is Josh

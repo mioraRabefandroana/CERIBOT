@@ -52,7 +52,10 @@ class ActionEdt(Action):
         return msg
     
     # TODO : appliquer le formatage
-    def speakable_subject(self, subjectTitle):
+    def speakable_subject(self, subjectTitle):        
+        subjectTitle = re.sub(r'\n',",\n", subjectTitle)
+        subjectTitle = re.sub(r' : '," ,: ", subjectTitle)
+        subjectTitle = re.sub(r' = '," . ",subjectTitle)
         return subjectTitle
     
     """
@@ -134,6 +137,8 @@ class ActionEdt(Action):
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         print("----action_edt-----")
+
+        # TODO : RAJOUTER LE TRAITEMENT (nettoyage) des données envoyé (<=> les phrases brutes)
 
         self.set_options()
 
