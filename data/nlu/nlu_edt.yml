@@ -1,0 +1,214 @@
+version: "2.0"
+
+nlu:
+- intent: salutation
+  examples: |
+    - salut
+    - bonjour
+    - bonsoir
+    - hello
+    - hey
+    - salut pepper
+    - hey pepper
+    - pepper ça va ?
+    - quoi de neuf pepper ?
+    - ça roule pepper ?
+    - salutation pepper
+    - dis moi pepper
+    - chao pepper
+
+- intent: aurevoir
+  examples: |
+    - bonsoir
+    - aurevoir
+    - bye bye
+    - on se capte
+    - bonne nuit
+    - bonne fin de journée
+    - bonne fin de soirée
+    - passe une bonne journée
+    - on se dit à tout à l'heur
+    - on se voit plustard
+    - à toute
+    - ok à toute
+
+- intent: affirmation
+  examples: |
+    - oui
+    - ok
+    - biensûr
+    - evidemment
+    - ça sonne bien
+    - c'est bien cela
+    - ça me convient
+    - ça me va bien
+    - ok ok
+    - d'accord
+    - ouais
+    - humm ok
+
+- intent: negation
+  examples: |
+    - non
+    - non non
+    - jamais
+    - je ne pense pas
+    - ça ne me plaît pas
+    - impossible
+    - pas vraiment
+
+- intent: bonne_humeur
+  examples: |
+    - parfait
+    - génial
+    - fantastique
+    - je me sens comme un roi
+    - magnifique
+    - je me sens bien
+    - je vais bien
+    - je suis géniale
+    - je vais sauver le monde
+    - je suis superman
+    - très bien
+    - trop parfait
+    - trop bien
+    - bien
+
+- intent: mauvaise_humeur
+  examples: |
+    - ma journée était horrible
+    - je suis triste
+    - je ne me sens pas bien
+    - je suis déçu
+    - très triste
+    - je me sens mal
+    - mal
+    - très triste
+    - malheureux
+    - pas bien
+    - pas très bien
+    - extrèmement triste
+    - trop triste
+    - mal mal et mal
+
+- intent: bot_challenge
+  examples: |
+    - est-tu un bot ?
+    - est-tu un humain ?
+    - suis-je entrain de parler à un bot ?
+    - suis-je entrain de parler à un humain ?
+
+- intent: demande_emploie_du_temps
+  examples: |
+    - pouvez-vous me donner mon emploi du temps ?
+    - donne moi l'horaire de ma section.
+    - qu'est-ce qui vient ensuite ?
+    - qu'est-ce que j'ai maintenant ?
+    - quel est l'horaire ?
+    - calendrier
+    - donne mon emploie du temps
+    - emploie du temps
+    - donne moi l'emploie du temps.
+
+- intent: donner_niveau_formation
+  examples: |
+    - je suis en [M1](niveau)
+    - [M1](niveau)
+    - ma formation est [M1](niveau)
+    - je suis inscrit en [M1](niveau)
+    - je suis en [M2](niveau)
+    - [M2](niveau)
+    - ma formation est [M2](niveau)
+    - je suis inscrit en [M2](niveau)
+    - je suis en [L3](niveau)
+    - [L3](niveau)
+    - ma formation est [L3](niveau)
+    - je suis inscrit en [L3](niveau)
+    - je suis en [L2](niveau)
+    - [L2](niveau)
+    - ma formation est [L2](niveau)
+    - je suis inscrit en [L2](niveau)
+    - je suis en [L1](niveau)
+    - [L1](niveau)
+    - ma formation est [L1](niveau)
+    - je suis inscrit en [L1](niveau)
+    - je suis en [hdr](niveau)
+    - [hdr](niveau)
+    - ma formation est [hdr](niveau)
+    - je suis inscrit en [hdr](niveau)
+    - je suis en [l1a1 allure 1 an](niveau)
+    - [l1a1 allure 1 an](niveau)
+    - ma formation est [l1a1 allure 1 an](niveau)
+    - je suis inscrit en [l1a1 allure 1 an](niveau)
+    - je suis en [la1 allure 1](niveau)
+    - [la1 allure 1](niveau)
+    - ma formation est [la1 allure 1](niveau)
+    - je suis inscrit en [la1 allure 1](niveau)
+    - je suis en [la2 allure 2](niveau)
+    - [la2 allure 2](niveau)
+    - ma formation est [la2 allure 2](niveau)
+    - je suis inscrit en [la2 allure 2](niveau)
+    - je suis en [l1 acces](niveau)
+    - [l1 acces](niveau)
+    - ma formation est [l1 acces](niveau)
+    - je suis inscrit en [l1 acces](niveau)
+
+- intent: donner_formation
+  examples: |
+    - [ILSEN](formation)
+    - [ilsen](formation)
+    - je suis en [ilsen](formation)
+    - je fais [ilsen](formation)
+    - [SICOM](formation)
+    - [sicom](formation)
+    - je suis en [sicom](formation)
+    - je fais [sicom](formation)
+    - [IA](formation)
+    - [ia](formation)
+    - je suis en [ia](formation)
+    - je fais [ia](formation)
+    - [informatique](formation)
+    - je suis en [informatique](formation)
+    - je fais [informatique](formation)
+    - [systemes informatiques communicants](formation)
+    - [intelligence artificielle](formation)
+    - [inge du logiciel de la societe num](formation)
+
+- intent: donner_option
+  examples: |
+    - [classique](option)
+    - je suis [classique](option)
+    - [alternant](option)
+    - je suis [alternant](option)
+    - [appli 1](option)
+    - je fais l'[appli 1](option)
+    - [appli 2](option)
+    - je fais l'[appli 2](option)
+    - [appli 3](option)
+    - je fais l'[appli 3](option)
+    - [appli 4](option)
+    - je fais l'[appli 4](option)
+
+
+- intent: donner_niveau_formation_et_formation
+  examples: |
+    - je suis en [M1](niveau) [ilsen](formation)
+    - [M1](niveau) [ilsen](formation)
+    - ma formation est [M1](niveau) [sicom](formation)
+    - je suis inscrit en [M1](niveau)
+    - je suis en [M2](niveau) [ia](formation)
+    - [M2](niveau) [intelligence artificielle](formation)
+    - ma formation est [M2](niveau) [intelligence artificielle](formation)
+    - je suis inscrit en [M2](niveau) [intelligence artificielle](formation)
+    - je suis en [L3](niveau) [informatique](formation)
+    - [L3](niveau) [informatique](formation)
+    - ma formation est [L3](niveau) [informatique](formation)
+    - je suis inscrit en [L3](niveau) [informatique](formation)
+    - je suis en [L2](niveau) [informatique](formation)
+    - [L2](niveau) [informatique](formation)
+    - ma formation est [L2](niveau) [informatique](formation)
+    - je suis inscrit en [L2](niveau) [informatique](formation)
+    - je suis en [L1](niveau) [informatique](formation)
+    - [L1](niveau) [informatique](formation)
+    - ma formation est [L1](niveau) [informatique](formation)
+    - je suis inscrit en [L1](niveau) [informatique](formation)

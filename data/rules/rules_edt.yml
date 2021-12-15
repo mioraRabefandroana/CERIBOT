@@ -1,0 +1,13 @@
+version: "2.0"
+
+rules:
+
+- rule: Dites au revoir à chaque fois que l'utilisateur dit au revoir
+  steps:
+  - intent: aurevoir
+  - action: utter_aurevoir
+
+- rule: Dites 'Je suis un bot' à chaque fois que l'utilisateur lance un défi
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

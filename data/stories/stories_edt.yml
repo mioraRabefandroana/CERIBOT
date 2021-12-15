@@ -1,0 +1,67 @@
+version: "2.0"
+
+stories:
+
+- story: chemin joyeux
+  steps:
+  - intent: salutation
+  - action: utter_salutation
+  - intent: bonne_humeur
+  - action: utter_joyeux
+
+- story: chemin malheureux 1
+  steps:
+  - intent: salutation
+  - action: utter_salutation
+  - intent: mauvaise_humeur
+  - action: utter_remonter_le_morale
+  - action: utter_demande_aide_valide
+  - intent: affirmation
+  - action: utter_joyeux
+
+- story: chemin malheureux 2
+  steps:
+  - intent: salutation
+  - action: utter_salutation
+  - intent: mauvaise_humeur
+  - action: utter_remonter_le_morale
+  - action: utter_demande_aide_valide
+  - intent: negation
+  - action: utter_aurevoir
+
+- story: demande emploie du temps 1
+  steps:
+  - intent: demande_emploie_du_temps
+  - action: utter_demande_infos_etudiant
+  - intent: donner_niveau_formation_et_formation
+    entities:
+    - niveau: M1
+    - formation: ilsen
+  - slot_was_set:
+    - niveau: M1
+    - formation: ilsen
+  - action: requete_edt
+  - action: utter_loop
+
+
+- story: demande emploie du temps 2
+  steps:
+  - intent: demande_emploie_du_temps
+  - action: utter_demande_infos_etudiant
+  - intent: donner_niveau_formation
+    entities:
+    - niveau: l1
+  - slot_was_set:
+    - niveau: l1
+  - action: utter_demande_formation
+  - intent: donner_formation
+    entities:
+    - formation: informatique
+  - slot_was_set:
+    - formation: informatique
+  - action: requete_edt
+  - action: utter_loop
+
+
+
+
