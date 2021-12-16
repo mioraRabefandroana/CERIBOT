@@ -44,12 +44,15 @@ class ActionSalleDisponible(Action):
     def get_site(self):
         return "CERI"
 
+    # TODO
     def get_date(self):
         return "2021-12-15"
 
+    # TODO
     def get_duree(self):
         return "1.30"
 
+    # TODO
     def get_debut(self):
         return "14.30"
 

@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Text
-from utils.api_urls import CERI_OPTIONS_LIST_URL, EDT_BY_FORMATION_URL, EDT_BY_OPTIONS_URL, OPTIONS_BY_FORMATION_URL
-from utils.custom_messages import INTRO_EDT, INTRO_SALLE_DISPONIBLE, NO_CLASSROOM_AVAILABLE, NOT_FOUND_EDT
+from dictionary.dict_formation import get_formation_acronym
+from utils.api_urls import CERI_FORMATION_LIST_URL, EDT_BY_FORMATION_URL, EDT_BY_OPTIONS_URL, OPTIONS_BY_FORMATION_URL
+from utils.custom_messages import INTRO_EDT, INTRO_SALLE_DISPONIBLE, NO_CLASSROOM_AVAILABLE, NOT_FOUND_EDT, NOT_FOUND_FORMATION, NOT_FOUND_NIVEAU
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 import re
@@ -68,12 +69,12 @@ class ActionEdt(Action):
         return libelle
 
     """
-    get all options for CERI site
+    get all fromations for CERI site
     """
-    def get_ceri_options_list(self):
-        url = CERI_OPTIONS_LIST_URL
-        options = send_request(url,{}).get("results")
-        for o in options:            
+    def get_ceri_formation_list(self):
+        url = CERI_FORMATION_LIST_URL
+        fromations = send_request(url,{}).get("results")
+        for o in fromations:            
             if((o.get("letter") is not None) and (o.get("letter").lower() == "informatique")):
                 return o.get("names")
 
@@ -83,26 +84,30 @@ class ActionEdt(Action):
     get code formation by a given formation name and niveau
     """
     def get_code_formation_by_formation_and_niveau(self, formation, niveau):
-        for o in self.options:
+        for o in self.fromations:
             name = o.get("name")
             if( 
-                self.is_option_names_equal(formation, name) 
+                self.is_fromation_names_equal(formation, name) 
                 and
-                self.is_option_names_equal(niveau, name) 
+                self.is_fromation_names_equal(niveau, name) 
             ):
                 return o.get("code"), name
 
         return None, None
     
-    # TODO : modifier par la condition d'égalité (distance de leve.. machin)
-    def is_option_names_equal(self, name1, name2):
+    # TODO : ~modifier par la condition d'égalité (distance de Levenshtein)
+    def is_fromation_names_equal(self, name1, name2):
+        # remove all white space for better comparison
+        name1 = name1.replace(" ","")
+        name2 = name2.replace(" ","")
+
         return name1.lower() in name2.lower()
     
     """
-    save options
+    save fromations
     """
-    def set_options(self):    
-        self.options = self.get_ceri_options_list()
+    def set_fromations(self):    
+        self.fromations = self.get_ceri_formation_list()
     
     """
     filter edt 
@@ -133,6 +138,10 @@ class ActionEdt(Action):
     def extract_hour(self, value):
         return value[11:16]
     
+    """
+    get niveau
+        format: m1, m2, l1, ....
+    """
     def get_niveau(self):
         niveau = self.tracker.get_slot("niveau")
         print("niveau0: ", niveau)
@@ -184,15 +193,16 @@ class ActionEdt(Action):
             return None
         return suffix
 
-
+    """
+    get formation acronym for easy search
+        using dictionary and comparison by "distance of levenstein"
+    """
     def get_formation(self):
         formation = self.tracker.get_slot("formation")
-
-        # informatique
-        # if( "".join( re.findall("^info", niveauStr)) ):
-        #     return "informatique"
-        print(">>>> formation slot: [{}]".format(formation))
-        return "m1"
+        if( not formation ):
+            return None
+        
+        return get_formation_acronym(formation)
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
@@ -202,7 +212,7 @@ class ActionEdt(Action):
 
         # TODO : RAJOUTER LE TRAITEMENT (nettoyage) des données envoyé (<=> les phrases brutes)
 
-        self.set_options()
+        self.set_fromations()
 
         # url = BASE_URL + "api/salles/disponibilite"
         # requestData = {
@@ -215,18 +225,31 @@ class ActionEdt(Action):
         # self.set_result( data )
 
         # TODO : remplacer par la valeur des slots
-        niveau = "m2"
-        formation = "ilsen"
+        # niveau = "m2"
+        niveau = self.get_niveau()
+        
+        if(not niveau):
+            dispatcher.utter_message( NOT_FOUND_NIVEAU )
+            return []
 
+        # formation = "ilsen"
+        formation = self.get_formation()
+        if(not formation):
+            dispatcher.utter_message( NOT_FOUND_FORMATION )
+            return []
+
+        # DEBUG
+        print("--------------- slots ---- ")
         print([
             self.get_formation(),
             self.get_niveau()
         ])
 
-
         codeFormation, self.formationName = self.get_code_formation_by_formation_and_niveau(formation, niveau)
+        
         # url = OPTIONS_BY_FORMATION_URL(codeFormation)
         # print(url)
+
         url = EDT_BY_FORMATION_URL(codeFormation)
         edt = send_request(url, [])
         self.date = f'{datetime.now():%Y-%m-%d}'
@@ -255,8 +278,8 @@ class ActionEdt(Action):
         #TODO :
         # lister les option - OK
         # filtrer par filière : - OK
-        #   rehercher la filière envoyé par le slot - WAITING
-        # filter par option :
+        #   rehercher la filière envoyé par le slot
+        #~ filter par option :  - WAITING
         #  1. interpreter l'option
         #  2. filter par l'option trouver
 
