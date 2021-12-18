@@ -95,35 +95,35 @@ stories:
   - user: |
       donne moi l'emploie du temps.
     intent: demande_emploie_du_temps
-  - action: requete_edt
+  - action: action_edt
 
 - story: demande emploie du temps 3
   steps:
   - user: |
       calendrier
     intent: demande_emploie_du_temps
-  - action: requete_edt
+  - action: action_edt
 
 - story: demande emploie du temps 4
   steps:
   - user: |
       pouvez-vous me donner mon emploi du temps ?
     intent: demande_emploie_du_temps
-  - action: requete_edt
+  - action: action_edt
 
   - story: demande emploie du temps 5
   steps:
   - user: |
       emploie du temps
     intent: demande_emploie_du_temps
-  - action: requete_edt
+  - action: action_edt
 
   - story: demande emploie du temps 6
   steps:
   - user: |
       donne mon emploie du temps
     intent: demande_emploie_du_temps
-  - action: requete_edt
+  - action: action_edt
 
   - story: demande salle dispo
   steps:

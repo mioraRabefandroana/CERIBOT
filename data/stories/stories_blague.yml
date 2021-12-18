@@ -4,3 +4,10 @@
 #   steps:
 #   - intent: raconte_blague
 #   - action: action_blague
+
+# - story: tester duckling
+#   steps:
+#   - intent: intent_test_duckling
+#     entities:
+#     - datetest: "2021-12-16"
+#   - action: response_duckling

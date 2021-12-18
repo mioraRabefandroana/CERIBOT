@@ -199,10 +199,18 @@ class ActionEdt(Action):
     """
     def get_formation(self):
         formation = self.tracker.get_slot("formation")
+        print("formation0 :", formation)
         if( not formation ):
             return None
         
         return get_formation_acronym(formation)
+    
+
+    def get_date(self):
+        date = self.tracker.get_slot("date")
+        # if(date is None):
+        
+        return f'{datetime.now():%Y-%m-%d}'
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
@@ -245,6 +253,7 @@ class ActionEdt(Action):
             self.get_niveau()
         ])
 
+        # get code formation : needed for the api requests
         codeFormation, self.formationName = self.get_code_formation_by_formation_and_niveau(formation, niveau)
         
         # url = OPTIONS_BY_FORMATION_URL(codeFormation)
@@ -252,7 +261,8 @@ class ActionEdt(Action):
 
         url = EDT_BY_FORMATION_URL(codeFormation)
         edt = send_request(url, [])
-        self.date = f'{datetime.now():%Y-%m-%d}'
+
+        self.date = self.get_date()        
 
         if( (not edt) or ("results" not in edt) ):
             self.message = NOT_FOUND_EDT

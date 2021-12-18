@@ -13,6 +13,7 @@ intents:
   - donner_formation
   - donner_option
   - donner_niveau_formation_et_formation
+  - demande_edt_avec_informations_complet
 
 entities:
   - niveau 
@@ -41,9 +42,10 @@ responses:
   utter_demande_option:
   - text: "Donne moi ton option s'il te plaît!"
 
-actions: 
-- action_edt
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+actions: 
+- action_edt
