@@ -10,6 +10,7 @@
         <File name="" src=".metadata" />
         <File name="html" src="html/index.html" />
         <File name="README" src="README.md" />
+        <File name="style" src="html/css/style.css" />
     </Resources>
     <Topics />
     <IgnoredPaths />
