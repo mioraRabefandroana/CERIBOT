@@ -1,0 +1,34 @@
+/* le titre pour la présentation des foctionalité (div) */
+.functionality-intro {
+
+}
+/* la foctionalité (div) */
+.functionality{
+    padding: 10px 35px;
+    background-color: #92f7ba;
+    margin: 5px;
+    border-radius: 25px;
+}
+
+.edt{
+    /* background-color: yellow; */
+}
+.edt-date{
+
+}
+.edt-subject{
+    color: #1e90ff;
+    background-color: #d1e8ff;
+    font-size: 15px;
+    padding: 8px;
+    margin: 10px;
+}
+
+.joke{
+    display: table;
+    margin: auto;
+    font-size: 25px;
+    padding: 50px;
+    background-color: #f5f976;
+    border-radius: 20px;
+}

@@ -18,8 +18,3 @@ rasa train --domain domain
 ```bash
 sudo docker run -p 8000:8000 rasa/duckling
 ```
-
-
-## Liste des classes
-.functionality-intro : le titre pour la présentation des foctionalité (div)
-.functionality : la foctionalité (div)

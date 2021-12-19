@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Text
 from dictionary.dict_formation import get_formation_acronym
 from utils.api_urls import CERI_FORMATION_LIST_URL, DATE_PARSER_URL, EDT_BY_FORMATION_URL, EDT_BY_OPTIONS_URL, OPTIONS_BY_FORMATION_URL
+from utils.custom_html import custom_response_message, to_html
 from utils.custom_messages import INTRO_EDT, INTRO_SALLE_DISPONIBLE, NO_CLASSROOM_AVAILABLE, NOT_FOUND_EDT, NOT_FOUND_FORMATION, NOT_FOUND_NIVEAU
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
@@ -36,22 +37,37 @@ class ActionEdt(Action):
     # TODO : formater toutes les données pour la lecture
     def get_result_message(self):
         # no available classroom
-        if(not self.edt or len(self.edt) == 0 or not self.formationName):
-            return NOT_FOUND_EDT
-        
-        msg = INTRO_EDT +"\n"
-        msg += self.formationName + ", \n"
-        msg += self.date + ", \n"
-        for subject in self.edt:
-            hourStart = self.extract_hour( subject.get("start") )
-            hourEnd = self.extract_hour( subject.get("end") )
-            msg += "de, {0} à {1},\n".format(hourStart, hourEnd)
+        if(self.message):
+            msg = self.message
+            html = to_html( "<h2>{0}</h2>".format(msg) )
 
-            msg += self.speakable_subject(subject.get("title")) +",\n"
+        elif(not self.edt or len(self.edt) == 0 or not self.formationName):
+            msg = NOT_FOUND_EDT
+            html = to_html( "<h2>{0}</h2>".format(msg) )
 
-            msg += "\n\n"
+        else:        
+            msg = ""
+            html = "<h3 class='formation-name'>{0}</h2>".format(self.formationName)
+            html += "<div class='edt-date'>{0}</div>".format( datetime.strptime(self.date, '%Y-%m-%d').strftime('%d/%m/%Y') )
+            for subject in self.edt:
+                hourStart = self.extract_hour( subject.get("start") )
+                hourEnd = self.extract_hour( subject.get("end") )
+
+                html += "{0} - {1}\n".format(hourStart, hourEnd)
+                html += self.subject_html(subject)
+
+                msg += self.speakable_subject(subject.get("title")) +",\n"                
+
+            html = to_html( "<div class='edt'>{0}</div>".format(html) )
             
-        return msg
+            msg = INTRO_EDT + "\n" + self.formationName + ", \n" + self.date + ", \n" + msg
+
+        return custom_response_message(msg, html)
+    
+
+    def subject_html(self, subject):
+        return "<div class='edt-subject'>{0}</div>".format(subject.get("title")) 
+        
     
     # TODO : appliquer le formatage
     def speakable_subject(self, subjectTitle):        
@@ -222,8 +238,10 @@ class ActionEdt(Action):
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
+
         self.tracker = tracker
         print("----action_edt-----")
+        self.message = ""
 
         # TODO : RAJOUTER LE TRAITEMENT (nettoyage) des données envoyé (<=> les phrases brutes)
         self.set_fromations()  
@@ -255,8 +273,7 @@ class ActionEdt(Action):
         else:            
             self.edt = edt.get("results")
             self.edt = self.filter_edt({"date": self.date})
-
-            self.message = self.get_result_message()        
+            # self.message = self.get_result_message()        
         
         # DEBUG
         print("------------------")
@@ -277,5 +294,5 @@ class ActionEdt(Action):
         #  1. interpreter l'option
         #  2. filter par l'option trouver
 
-        dispatcher.utter_message(self.message)
+        dispatcher.utter_message(self.get_result_message())
         return []

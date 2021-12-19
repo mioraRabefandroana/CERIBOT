@@ -16,7 +16,7 @@ class ActionJoke(Action):
     convert results (json format) into a readable message
     """
     def get_result_message(self):
-        html = to_html(self.joke)
+        html = to_html( "<div class='joke'>{0}</div>".format( self.joke )  )
         text = self.speakable_joke(self.joke)
         return custom_response_message(text, html)
         # return self.speakable_joke(self.joke)
