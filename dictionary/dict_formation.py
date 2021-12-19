@@ -8,8 +8,10 @@ threshold = 90
 # WARNING : the order is very important HERE : informatique must come before sicom ;)
 formations = {
     "informatique": "informatique",
+    "info": "informatique",
     "intelligence artificielle": "ia",
     "inge du logiciel de la societe num": "ilsen",
+    "ingénieurie logiciel": "ilsen",
     "systemes informatiques communicants": "sicom",
 }
 
