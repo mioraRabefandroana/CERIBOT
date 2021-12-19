@@ -43,6 +43,7 @@ class ActionJoke(Action):
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         print("----action_joke-----")
+        # DEBUG
         # print(tracker.latest_message.get("text"))
         self.debug(tracker.latest_message.get("text"))
         print("#################")

@@ -16,7 +16,7 @@ rasa train --domain domain
 ## Démarage serveurs
 ### duckling
 ```bash
-docker run -p 8000:8000 rasa/duckling
+sudo docker run -p 8000:8000 rasa/duckling
 ```
 
 

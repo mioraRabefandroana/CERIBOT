@@ -1,14 +1,15 @@
 from typing import Any, Dict, List, Text
 from dictionary.dict_formation import get_formation_acronym
-from utils.api_urls import CERI_FORMATION_LIST_URL, EDT_BY_FORMATION_URL, EDT_BY_OPTIONS_URL, OPTIONS_BY_FORMATION_URL
+from utils.api_urls import CERI_FORMATION_LIST_URL, DATE_PARSER_URL, EDT_BY_FORMATION_URL, EDT_BY_OPTIONS_URL, OPTIONS_BY_FORMATION_URL
 from utils.custom_messages import INTRO_EDT, INTRO_SALLE_DISPONIBLE, NO_CLASSROOM_AVAILABLE, NOT_FOUND_EDT, NOT_FOUND_FORMATION, NOT_FOUND_NIVEAU
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 import re
 
 from datetime import datetime
+import subprocess
 
-from utils.custom_url_request import send_request
+from utils.custom_url_request import send_post_request, send_request
 
 """
 Niveau : ex: Master 1, Licence 2, ...
@@ -83,13 +84,13 @@ class ActionEdt(Action):
     """
     get code formation by a given formation name and niveau
     """
-    def get_code_formation_by_formation_and_niveau(self, formation, niveau):
+    def get_code_formation(self):
         for o in self.fromations:
             name = o.get("name")
             if( 
-                self.is_fromation_names_equal(formation, name) 
+                self.is_fromation_names_equal(self.formation, name) 
                 and
-                self.is_fromation_names_equal(niveau, name) 
+                self.is_fromation_names_equal(self.niveau, name) 
             ):
                 return o.get("code"), name
 
@@ -144,7 +145,6 @@ class ActionEdt(Action):
     """
     def get_niveau(self):
         niveau = self.tracker.get_slot("niveau")
-        print("niveau0: ", niveau)
         if(niveau is None):
             return None
         
@@ -157,7 +157,6 @@ class ActionEdt(Action):
             return prefix
         
         niveau = prefix + suffix
-        print(">>>> niveau slot: [{}]".format(niveau))
         
         return niveau
 
@@ -205,12 +204,20 @@ class ActionEdt(Action):
         
         return get_formation_acronym(formation)
     
-
+    """
+    get date
+    return today's date if no date has been found
+    """
     def get_date(self):
-        date = self.tracker.get_slot("date")
-        # if(date is None):
-        
-        return f'{datetime.now():%Y-%m-%d}'
+        try:
+            text = self.tracker.latest_message.get("text")
+            res = send_post_request(DATE_PARSER_URL, {"text": text})
+            # print("PARSED DATE :", res.get("results").get("date"))
+            return res.get("results").get("date")
+
+        except Exception:
+            return f'{datetime.now():%Y-%m-%d}'
+
 
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
@@ -219,82 +226,56 @@ class ActionEdt(Action):
         print("----action_edt-----")
 
         # TODO : RAJOUTER LE TRAITEMENT (nettoyage) des données envoyé (<=> les phrases brutes)
+        self.set_fromations()  
 
-        self.set_fromations()
+        # get date
+        self.date = self.get_date()   
 
-        # url = BASE_URL + "api/salles/disponibilite"
-        # requestData = {
-        #     "niveau": "",
-        #     "formation": "ILSEN",
-        #     "option": "3"
-        # }
-
-        # data = send_request(url, requestData)
-        # self.set_result( data )
-
-        # TODO : remplacer par la valeur des slots
-        # niveau = "m2"
-        niveau = self.get_niveau()
+        # get niveau
+        self.niveau = self.get_niveau()
         
-        if(not niveau):
+        if(not self.niveau):
             dispatcher.utter_message( NOT_FOUND_NIVEAU )
             return []
 
-        # formation = "ilsen"
-        formation = self.get_formation()
-        if(not formation):
+        # get formation
+        self.formation = self.get_formation()
+        if(not self.formation):
             dispatcher.utter_message( NOT_FOUND_FORMATION )
             return []
 
-        # DEBUG
-        print("--------------- slots ---- ")
-        print([
-            self.get_formation(),
-            self.get_niveau()
-        ])
-
         # get code formation : needed for the api requests
-        codeFormation, self.formationName = self.get_code_formation_by_formation_and_niveau(formation, niveau)
+        codeFormation, self.formationName = self.get_code_formation()
         
-        # url = OPTIONS_BY_FORMATION_URL(codeFormation)
-        # print(url)
-
         url = EDT_BY_FORMATION_URL(codeFormation)
         edt = send_request(url, [])
-
-        self.date = self.get_date()        
 
         if( (not edt) or ("results" not in edt) ):
             self.message = NOT_FOUND_EDT
         else:            
-            # print(formationName)
             self.edt = edt.get("results")
             self.edt = self.filter_edt({"date": self.date})
 
-            self.message = self.get_result_message()
+            self.message = self.get_result_message()        
         
-        
+        # DEBUG
+        print("------------------")
+        print([
+            self.get_formation(),
+            self.niveau,
+            self.date
+        ])
         print("selected formation =>", self.formationName)
         print("edt URL :", url)
        
-        #     print(options)
-        #     options = options.get("results")
-        #     options = [ o.get("code") for o in options ]
-        #     print("url ==>", EDT_BY_OPTIONS_URL(options))
-        #     # edt = send_request(EDT_BY_OPTIONS_URL(options), []).get("results")
-        #     self.message = "succès"    
-        # print(options)
 
         #TODO :
         # lister les option - OK
         # filtrer par filière : - OK
-        #   rehercher la filière envoyé par le slot
+        #   rehercher la filière envoyé par le slot - OK
         #~ filter par option :  - WAITING
         #  1. interpreter l'option
         #  2. filter par l'option trouver
 
-        # dispatcher.utter_message(self.get_result_message())
         dispatcher.utter_message(self.message)
-
-        # return [SlotSet("name", personName)]
         return []
