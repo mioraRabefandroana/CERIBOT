@@ -41,8 +41,6 @@ stories:
     - niveau: M1
     - formation: ilsen
   - action: action_edt
-  - action: utter_loop
-
 
 - story: demande emploie du temps 2
   steps:
@@ -60,7 +58,7 @@ stories:
   - slot_was_set:
     - formation: informatique
   - action: action_edt
-  - action: utter_loop
+
 
 
 

@@ -34,7 +34,6 @@ class ActionEdt(Action):
     """
     convert results (json format) into a readable message
     """
-    # TODO : formater toutes les données pour la lecture
     def get_result_message(self):
         # no available classroom
         if(self.message):
@@ -68,22 +67,15 @@ class ActionEdt(Action):
     def subject_html(self, subject):
         return "<div class='edt-subject'>{0}</div>".format(subject.get("title")) 
         
-    
-    # TODO : appliquer le formatage
+    """
+    format salle libelle into a better speakable text for NAO/Pepper
+    """
     def speakable_subject(self, subjectTitle):        
         subjectTitle = re.sub(r'\n',",\n", subjectTitle)
         subjectTitle = re.sub(r' : '," ,: ", subjectTitle)
         subjectTitle = re.sub(r' = '," . ",subjectTitle)
         return subjectTitle
-    
-    """
-    format salle libelle into a better speakable text for NAO/Pepper
-    """
-    def speakable_salle_libelle(self, libelle):
-        libelle = re.sub(r'^s',"salle ", libelle)
-        libelle = re.sub(r'=',".",libelle)
-        libelle = re.sub(r' 0'," ",libelle)
-        return libelle
+
 
     """
     get all fromations for CERI site
@@ -111,14 +103,13 @@ class ActionEdt(Action):
                 return o.get("code"), name
 
         return None, None
-    
-    # TODO : ~modifier par la condition d'égalité (distance de Levenshtein)
+
     def is_fromation_names_equal(self, name1, name2):
         # remove all white space for better comparison
         name1 = name1.replace(" ","")
         name2 = name2.replace(" ","")
 
-        return name1.lower() in name2.lower()
+        return (name1.lower() in name2.lower()) or (name1.lower() in name2.lower())
     
     """
     save fromations
@@ -243,7 +234,6 @@ class ActionEdt(Action):
         print("----action_edt-----")
         self.message = ""
 
-        # TODO : RAJOUTER LE TRAITEMENT (nettoyage) des données envoyé (<=> les phrases brutes)
         self.set_fromations()  
 
         # get date
@@ -284,15 +274,6 @@ class ActionEdt(Action):
         ])
         print("selected formation =>", self.formationName)
         print("edt URL :", url)
-       
-
-        #TODO :
-        # lister les option - OK
-        # filtrer par filière : - OK
-        #   rehercher la filière envoyé par le slot - OK
-        #~ filter par option :  - WAITING
-        #  1. interpreter l'option
-        #  2. filter par l'option trouver
 
         dispatcher.utter_message(self.get_result_message())
         return []

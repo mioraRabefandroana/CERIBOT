@@ -128,7 +128,6 @@ nlu:
     - ma formation est [L1](niveau) [informatique](formation)
     - je suis inscrit en [L1](niveau) [informatique](formation)
 
-# TODO : rajouter la date dans les paramètres (slot)
 - intent : demande_edt_avec_informations_complet
   examples: |
     - je voudrais l'emploi du temps du [m1](niveau) [ilsen](formation)

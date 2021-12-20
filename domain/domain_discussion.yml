@@ -30,8 +30,6 @@ responses:
   utter_iamabot:
   - text: "Je suis un bot, créé par Rasa."
 
-  utter_loop:
-  - text: "Ce sera tout ?"
 
 session_config:
   session_expiration_time: 60

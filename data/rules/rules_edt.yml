@@ -2,7 +2,12 @@ version: "2.0"
 
 rules:
 
-- rule: Donner directement l'emploi du temps quand on le demande
+- rule: Donner directement l'emploi du temps quand on le demande  
+  condition:
+  - slot_was_set:
+    - niveau 
+    - formation
+    - option
   steps:
   - intent: demande_edt_avec_informations_complet
   - action: action_edt
