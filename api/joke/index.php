@@ -38,7 +38,7 @@ function getJoke()
         A télécharger Google Chrome",
 
         "Quand est ce que Windows ne bug pas ?,
-        Quand l'ordinateur est éteint.",
+        Quand l'ordinateur est éteint.", 
 
         "De quelle couleur sont tes yeux ?,
         #1292f4 et toi ?",
