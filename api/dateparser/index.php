@@ -18,23 +18,33 @@ try{
     exec($command, $output);
 
     $dateTime =  json_decode($output[0], true); 
-
     // print_r($dateTime[0]["value"]["values"][0]["value"]);
 
     $dateTime = $dateTime[0]["value"]["value"];
 
     $date = substr($dateTime, 0, 10);
-    if(!$date)
-    {
-        echo json_encode(null);
-        return;
-    }
     $hour = substr($dateTime, 11, 5);
+
+    $hours = [];
+    if(!$hour)
+    {
+        $hours0 = json_decode($output[0], true)[0]["value"]["values"];
+        foreach($hours0 as $dt)
+        {
+            $h = substr($dt["from"]["value"], 11, 5) ;
+            $hours[] = $h;
+
+            // $date = ($date) ? $date : substr($dt["from"]["value"], 0, 10);
+        }
+        $hours = array_unique($hours);
+    }
+    
 
     $res = json_encode([
         "results" => [
             "date" => $date,
-            "hour" => $hour
+            "hour" => $hour,
+            "hours" =>  $hours
         ]
     ]);
 
@@ -42,7 +52,8 @@ try{
 }
 catch(Exception $e)
 {
-    echo json_encode(null);
+    echo json_encode('strval($output)');
+//    echo json_encode(null);
 }
 
 
