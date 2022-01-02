@@ -1,6 +1,16 @@
-# Ceci a été transferé dans rules
+version: "2.0"
 
-# - story: demander salle disponible
-#   steps:
-#   - intent: demande_de_salle_disponible
-#   - action: action_salle_disponible
+stories:
+- story: demande disponibilité de salle sans rien spécifier
+  steps:
+  - intent: demande_salle_disponible
+  - action: action_salle_disponible
+
+- story: demande disponibilité de salle avec début seulement
+  steps:
+  - intent: demande_salle_disponible_avec_debut
+    entities:
+    - debut: 8 heures 30
+  - slot_was_set:
+    - debut: 8 heures 30
+  - action: action_salle_disponible

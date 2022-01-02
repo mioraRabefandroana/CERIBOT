@@ -35,7 +35,6 @@ class ActionEdt(Action):
     convert results (json format) into a readable message
     """
     def get_result_message(self):
-        # no available classroom
         if(self.message):
             msg = self.message
             html = to_html( "<h2>{0}</h2>".format(msg) )

@@ -32,3 +32,10 @@
     background-color: #f5f976;
     border-radius: 20px;
 }
+
+
+.salle-disponible{
+    background-color: #95d9d2;
+    padding: 7px;
+    margin-bottom: 5px;
+}

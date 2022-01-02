@@ -1,5 +1,8 @@
 intents:
-  - demande_de_salle_disponible
+  - demande_salle_disponible
+  - demande_salle_disponible_avec_debut
+  - demande_salle_disponible_avec_duree
+  - demande_salle_disponible_avec_debut_et_duree
 
 actions: 
 - action_salle_disponible
