@@ -1,0 +1,52 @@
+version: "2.0"
+stories:
+
+- story: un
+  steps:
+  - intent: demander_meteo
+  - action: utter_demander_localisation
+  - intent: donner_ville
+    entities:
+    - ville: Londres
+  - slot_was_set:
+    - ville: Londres
+  - action: action_meteo
+
+- story: deux
+  steps:
+  - intent: demander_meteo
+  - action: utter_demander_localisation
+  - intent: donner_ville
+    entities:
+    - ville: Paris
+  - slot_was_set:
+    - ville: Paris
+  - action: action_meteo
+
+- story: trois
+  steps:
+  - intent: demander_meteo_ville
+    entities:
+    - ville: Paris
+  - slot_was_set:
+    - ville: Paris
+  - action: action_meteo
+
+
+- story: quatre
+  steps:
+  - intent: demander_meteo_ville
+    entities:
+    - ville: Berlin
+  - slot_was_set:
+    - ville: Berlin
+  - action: action_meteo
+
+- story: cinq
+  steps:
+  - intent: demander_meteo_ville
+    entities:
+    - ville: Parakou
+  - slot_was_set:
+    - ville: Parakou
+  - action: action_meteo

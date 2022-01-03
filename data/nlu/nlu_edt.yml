@@ -138,8 +138,7 @@ nlu:
     - je voudrais l'emploi du temps du [m1](niveau) [ilsen](formation)
     - je voudrais l'emploi du temps du [master 1](niveau) [inge du logiciel de la societe num(formation)
     - je voudrais l'emploi du temps du [m2](niveau) [inge du logiciel de la societe num](formation)
-    - je voudrais l'emploi du temps du [master 2](niveau) [inge du logiciel de la societe num](formation)
-
+    - je voudrais l'emploi du temps du [master 2](niveau) [inge du logiciel de la societe num](formation
     - je voudrais l'emploi du temps du [master 1](niveau) [sicom](formation)
     - je voudrais l'emploi du temps du [master 2](niveau) [sicom](formation)
     - je voudrais l'emploi du temps du [m1](niveau) [sicom](formation)
@@ -148,17 +147,14 @@ nlu:
     - je voudrais l'emploi du temps du [master 2](niveau) [systemes informatiques communicants](formation)
     - je voudrais l'emploi du temps du [m1](niveau) [systemes informatiques communicants](formation)
     - je voudrais l'emploi du temps du [m2](niveau) [systemes informatiques communicants](formation)
-
     - je voudrais l'emploi du temps du [l1a1 allure 1](niveau) [informatique](formation)
     - je voudrais l'emploi du temps du [l1a1 allure 2](niveau) [informatique](formation)
-
     - je souhaiterai connaître l'emploi du temps de la [m2](niveau) [intelligence artificielle](formation)
     - je souhaiterai connaître l'emploi du temps de la [master 2](niveau) [ia](formation)
     - je souhaiterai connaître l'emploi du temps de la [m1](niveau) [intelligence artificielle](formation)
     - je souhaiterai connaître l'emploi du temps de la [master 2](niveau) [ia](formation)
     - je souhaiterai connaître l'emploi du temps de la [licence 2](niveau) [informatique](formation)
     - je souhaiterai connaître l'emploi du temps de la [l2](niveau) [informatique](formation)
-
     - peut tu me mmontrer l'emploi du temps de la [l1](niveau) [informatique](formation) s'il te plaît
     - peut tu me mmontrer l'emploi du temps de la [licence 1](niveau) [informatique](formation) s'il te plaît
     - peut tu me mmontrer l'emploi du temps de la [l2](niveau) [informatique](formation) s'il te plaît
