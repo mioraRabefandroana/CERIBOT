@@ -75,7 +75,7 @@ class ActionSalleDisponible(Action):
             if(not date):
                 date = f'{datetime.now():%Y-%m-%d}'
             if(not hour):
-                date = f'{datetime.now():%H:00}'
+                hour = f'{datetime.now():%H:00}'
 
             return {
                 "date": date,
@@ -84,7 +84,11 @@ class ActionSalleDisponible(Action):
 
         except Exception as e:
             print("e=> ", e)
-            return f'{datetime.now():%Y-%m-%d}'
+            return {
+                "date": f'{datetime.now():%Y-%m-%d}',
+                "hour": f'{datetime.now():%H:00}'
+            }
+            # return f'{datetime.now():%Y-%m-%d}'
     
     # fixed at 1h30
     def get_duree(self):
