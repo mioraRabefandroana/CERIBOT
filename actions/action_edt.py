@@ -220,7 +220,10 @@ class ActionEdt(Action):
             text = self.tracker.latest_message.get("text")
             res = send_post_request(DATE_PARSER_URL, {"text": text})
             # print("PARSED DATE :", res.get("results").get("date"))
-            return res.get("results").get("date")
+            date = res.get("results").get("date")
+            if not date:
+                date = f'{datetime.now():%Y-%m-%d}'
+            return date
 
         except Exception:
             return f'{datetime.now():%Y-%m-%d}'
