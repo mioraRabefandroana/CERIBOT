@@ -37,44 +37,12 @@ class ActionSalleDisponible(Action):
         html = to_html( "{0}<div id='salle-diponible-wrapper'>{1}</div>".format(htmlIntro, html) )
         return custom_response_message(msg, html)
 
-
-    """
-    convert results (json format) into a readable message
-    """
-    # def get_result_message(self):
-    #     # no available classroom
-    #     if(self.message):
-    #         msg = self.message
-    #         html = to_html( "<h2>{0}</h2>".format(msg) )
-
-    #     elif(not self.edt or len(self.edt) == 0 or not self.formationName):
-    #         msg = NOT_FOUND_EDT
-    #         html = to_html( "<h2>{0}</h2>".format(msg) )
-
-    #     else:        
-    #         msg = ""
-    #         html = "<h3 class='formation-name'>{0}</h2>".format(self.formationName)
-    #         html += "<div class='edt-date'>{0}</div>".format( datetime.strptime(self.date, '%Y-%m-%d').strftime('%d/%m/%Y') )
-    #         for subject in self.edt:
-    #             hourStart = self.extract_hour( subject.get("start") )
-    #             hourEnd = self.extract_hour( subject.get("end") )
-
-    #             html += "{0} - {1}\n".format(hourStart, hourEnd)
-    #             html += self.subject_html(subject)
-
-    #             msg += self.speakable_subject(subject.get("title")) +",\n"                
-
-    #         html = to_html( "<div class='edt'>{0}</div>".format(html) )
-            
-    #         msg = INTRO_EDT + "\n" + self.formationName + ", \n" + self.date + ", \n" + msg
-
-    #     return custom_response_message(msg, html)
-
     """
     format salle libelle into a better speakable text for NAO/Pepper
     """
     def speakable_salle_libelle(self, libelle):
-        libelle = re.sub(r'^s',"salle ", libelle)
+        if("stat" not in libelle):
+            libelle = re.sub(r'^s',"salle ", libelle)
         libelle = re.sub(r'=',".",libelle)
         libelle = re.sub(r' 0'," ",libelle)
         return libelle
@@ -128,7 +96,6 @@ class ActionSalleDisponible(Action):
         print("----action_classroom_availability-----")
         self.tracker = tracker
         dateHour = self.get_date_and_hour()
-        # print("def: ", dateHour)
 
         url = CLASSROOM_AVAILAIBILITY_URL
 
@@ -145,6 +112,4 @@ class ActionSalleDisponible(Action):
 
 
         dispatcher.utter_message(self.get_result_message())
-
-        # return [SlotSet("name", personName)]
         return []

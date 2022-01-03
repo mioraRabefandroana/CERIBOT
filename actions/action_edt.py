@@ -151,6 +151,7 @@ class ActionEdt(Action):
     """
     def get_niveau(self):
         niveau = self.tracker.get_slot("niveau")
+        print(niveau)
         if(niveau is None):
             return None
         
