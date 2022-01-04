@@ -5,9 +5,3 @@ rules:
   steps:
   - intent: raconte_blague
   - action: action_blague
-
-
-- rule: tester duckling
-  steps:
-  - intent: intent_test_duckling
-  - action: response_duckling

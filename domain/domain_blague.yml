@@ -8,11 +8,3 @@ actions:
 
 entities:
   - time
-
-slots:
-  time: 
-    type: any
-
-responses:
-  response_duckling:
-  - text: "date trouvé time"
