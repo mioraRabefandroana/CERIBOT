@@ -1,0 +1,13 @@
+version: "2.0"
+
+rules:
+
+- rule: faire un quizz
+  steps:
+  - intent: lance_quizz
+  - action: action_quizz
+
+- rule: finir quizz
+  steps:
+  - intent: fin_quizz
+  - action: action_fin_quizz

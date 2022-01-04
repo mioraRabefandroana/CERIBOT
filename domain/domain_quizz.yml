@@ -1,0 +1,12 @@
+version: "2.0"
+
+intents:
+  - lance_quizz
+  - fin_quizz
+actions:
+  - action_quizz
+  - action_fin_quizz
+
+
+
+responses:

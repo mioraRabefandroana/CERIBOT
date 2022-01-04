@@ -1,0 +1,15 @@
+version: "2.0"
+
+nlu:
+- intent: lance_quizz
+  examples: |
+    - quizz
+    - culture generale
+    - peut-on faire un tour de quizz ?
+    - un quizz ?
+    
+- intent: fin_quizz
+  examples: |
+    - fin du quizz
+    - je ne veux plus faire le quizz
+    - ohh je ne joue plus
