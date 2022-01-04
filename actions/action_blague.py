@@ -19,12 +19,6 @@ class ActionJoke(Action):
         html = to_html( "<div class='joke'>{0}</div>".format( self.joke )  )
         text = self.speakable_joke(self.joke)
         return custom_response_message(text, html)
-        # return self.speakable_joke(self.joke)
-        # return json.dumps({
-        #     "text": text,
-        #     "html": html
-        # },
-        # ensure_ascii=True)
 
 
     """
@@ -33,27 +27,13 @@ class ActionJoke(Action):
     def speakable_joke(self, joke):
         return joke
 
-    def debug(self, text):
-        bashCommand = "curl -XPOST http://localhost:8000/parse --data 'locale=fr_FR&text=\"je serais là le 10 janvier 2007\"&dims=\"[\"time\"]'"
-        process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
-        output, error = process.communicate()
-        print(type(output),'###',error)
-
     async def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         print("----action_joke-----")
-        # DEBUG
-        # print(tracker.latest_message.get("text"))
-        self.debug(tracker.latest_message.get("text"))
-        print("#################")
         
         url = JOKE_URL
         self.joke = json.loads( urllib.request.urlopen(url).read() ).get("results")
-
-        print(self.joke)
-        res = self.get_result_message()
-        print(res)
 
         dispatcher.utter_message(self.get_result_message())
         return []
