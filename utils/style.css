@@ -39,3 +39,33 @@
     padding: 7px;
     margin-bottom: 5px;
 }
+
+
+.quizz-message-success{
+    color: green
+}
+.quizz-message-error{
+    color: red
+}
+
+.quizz-notice{
+    background-color: skyblue;
+    text-align: center;
+    padding: 5px;
+}
+
+.quizz-choice{
+    background-color: silver;
+    padding: 10px 50px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+
+.correct-answer{
+    background-color: green;
+    color: white;
+}
+.wrong-answer{
+    background-color: red;
+}
