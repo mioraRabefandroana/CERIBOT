@@ -1,0 +1,51 @@
+version: "2.0"
+
+intents:
+  - salutation
+  - aurevoir
+  - affirmation
+  - negation
+  - bonne_humeur
+  - mauvaise_humeur
+  - bot_challenge
+  - demande_emploie_du_temps
+  - donner_niveau_formation
+  - donner_formation
+  - donner_option
+  - donner_niveau_formation_et_formation
+  - demande_edt_avec_informations_complet
+
+entities:
+  - niveau 
+  - formation
+  - option
+
+slots:
+  niveau: 
+    type: rasa.shared.core.slots.TextSlot
+  formation:
+    type: rasa.shared.core.slots.TextSlot
+  option:
+    type: rasa.shared.core.slots.TextSlot
+
+responses:
+
+  utter_demande_infos_etudiant:
+  - text: "Peux-tu me donner ton niveau, ta formation et si possible ton option s'il te plait ?"
+
+  utter_demande_niveau:
+  - text: "Donne moi ton niveau de formation s'il te plaît!"
+
+  utter_demande_formation:
+  - text: "Donne moi ta formation s'il te plaît!"
+
+  utter_demande_option:
+  - text: "Donne moi ton option s'il te plaît!"
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions: 
+- action_edt

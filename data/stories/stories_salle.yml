@@ -1,0 +1,35 @@
+version: "2.0"
+
+stories:
+- story: demande disponibilité de salle sans rien spécifier
+  steps:
+  - intent: demande_salle_disponible
+  - action: action_salle_disponible
+
+- story: demande disponibilité de salle avec début seulement 1
+  steps:
+  - intent: demande_salle_disponible_avec_debut
+    entities:
+    - debut: 8 heures 30
+  - slot_was_set:
+    - debut: 8 heures 30
+  - action: action_salle_disponible
+
+
+- story: demande disponibilité de salle avec début seulement 2
+  steps:
+  - intent: demande_salle_disponible_avec_debut
+    entities:
+    - debut: 10 heures
+  - slot_was_set:
+    - debut: 10 heures
+  - action: action_salle_disponible
+
+- story: demande disponibilité de salle avec début seulement 3
+  steps:
+  - intent: demande_salle_disponible_avec_debut
+    entities:
+    - debut: 14 heures 30
+  - slot_was_set:
+    - debut: 14 heures 30
+  - action: action_salle_disponible

@@ -1,0 +1,40 @@
+version: "2.0"
+
+stories:
+
+- story: demande wiki 1
+  steps:
+  - intent: demande_wikipedia
+    entities:
+    - demande_wiki: Festival d'Avignon
+  - slot_was_set:
+    - demande_wiki: Festival d'Avignon
+  - action: action_wiki
+
+- story: demande wiki 2
+  steps:
+  - intent: demande_wikipedia
+    entities:
+    - demande_wiki: Obama
+  - slot_was_set:
+    - demande_wiki: Obama
+  - action: action_wiki
+
+- story: demande wiki 3
+  steps:
+  - intent: demande_wikipedia
+    entities:
+    - demande_wiki: univers
+  - slot_was_set:
+    - demande_wiki: univers
+  - action: action_wiki
+
+- story: demande wiki 4
+  steps:
+  - intent: demande_wikipedia
+    entities:
+    - demande_wiki: intelligence artificielle
+  - slot_was_set:
+    - demande_wiki: intelligence artificielle
+  - action: action_wiki
+

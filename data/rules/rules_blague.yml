@@ -1,0 +1,8 @@
+version: "2.0"
+
+rules:
+- rule: raconter une blague
+  steps:
+  - intent: raconte_blague
+  - action: action_blague
+

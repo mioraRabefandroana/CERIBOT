@@ -1,0 +1,32 @@
+version: "2.0"
+
+nlu:
+# les dates et heures seront extrait par un serveur externe : Duckling dans l'action s'il y en a
+- intent: demande_salle_disponible
+  examples: |
+    - Quelle sont les salles disponibles !
+    - Est-ce qu'il y des salles disponibles ?
+    - Une salle est-il disponibles ?
+    - Quelles sont les salles disponible à partir de 12 heures 30 ?
+    - Quelles sont les salles disponible à partir de 9 heures debut pour une durée de 1h30 ?
+    - Je voudrais la liste des salles disponibles
+    - Est-ce qu'il y des salles disponibles demain?
+    - Est-ce qu'il y des salles disponibles demain à 8 heures 30 ?
+    - Est-ce qu'il y des salles disponibles à 8 heures 30 ?
+
+- intent: demande_salle_disponible_avec_debut
+  examples: |
+    - Quelles sont les salles disponible à partir de [9 heures](debut)?
+    - Quelles sont les salles disponible à partir de [13 heures](debut)?
+    - Quelles sont les salles disponible à partir de [9 heures 30](debut)?
+    - Quelles sont les salles disponible à partir de [11 heures 30](debut)?
+    - Quelles sont les salles disponible à partir de [11 heures](debut)?
+    - Quelles sont les salles disponible à partir de [12 heures 30](debut)?
+    - Quelles sont les salles disponible à partir de [8 heures](debut)?
+    - Quelles sont les salles disponible à partir de [8 heures 30](debut)?
+    - Est-ce qu'il y des salles disponibles à [10 heures](debut) ?
+    - Est-ce qu'il y des salles disponibles à [13 heures](debut) ?
+    - Est-ce qu'il y des salles disponibles à [10 heures 30](debut) ?
+    - Je voudrais la liste des salles disponibles à partir de [11 heures](debut)
+    - Je voudrais la liste des salles disponibles à partir de [11 heures 30](debut)
+    - Je voudrais la liste des salles disponibles à partir de [13 heures 30](debut)

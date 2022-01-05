@@ -1,0 +1,8 @@
+version: "2.0"
+
+intents:
+  - raconte_blague
+
+actions: 
+- action_blague
+

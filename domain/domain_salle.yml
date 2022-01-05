@@ -1,0 +1,21 @@
+version: "2.0"
+
+intents:
+  - demande_salle_disponible
+  - demande_salle_disponible_avec_debut
+  - demande_salle_disponible_avec_duree
+ # - demande_salle_disponible_avec_debut_et_duree
+
+
+entities:
+  - debut
+
+slots:
+  debut:
+    type: text
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+actions: 
+- action_salle_disponible

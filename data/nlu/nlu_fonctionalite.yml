@@ -1,0 +1,12 @@
+version: "2.0"
+
+nlu:
+- intent: demande_fonctionalite
+  examples: |
+    - qu'est ce que tu peux faire?
+    - dit pepper, que peut tu faire?
+    - quelle sont les services disponible?
+    - tu sais faire quoi?
+    - vous savez faire quoi?
+    - dit moi ce que tu peux faire
+  
