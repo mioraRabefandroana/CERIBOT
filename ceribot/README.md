@@ -15,7 +15,13 @@ rasa run --enable-api --cors "*"
 rasa run actions
 ```
 
-## Dépendance externe
+## Dépendances externes
+
+### Librairies Python
+```
+  pip install -r requirements.txt
+```
+
 ### duckling
 [Duckling](https://duckling.wit.ai/) est un serveur permettant l'extraction des dates contenu dans du texte
 ```bash
