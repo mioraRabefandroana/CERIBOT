@@ -1,0 +1,9 @@
+intents:
+  - raconte_blague
+
+actions: 
+- action_blague
+
+
+entities:
+  - time

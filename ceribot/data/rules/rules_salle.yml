@@ -1,0 +1,8 @@
+version: "2.0"
+
+rules:
+
+- rule: demander salle disponible
+  steps:
+  - intent: demande_salle_disponible
+  - action: action_salle_disponible

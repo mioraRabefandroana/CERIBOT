@@ -1,0 +1,27 @@
+version: "2.0"
+
+nlu:
+- intent: demarre_quizz
+  examples: |
+    - quizz
+    - culture generale
+    - peut-on faire un tour de quizz ?
+    - un quizz ?
+- intent: repondre_quizz
+  examples: |
+    - [un](reponse_quizz)
+    - [1](reponse_quizz)
+    - [deux](reponse_quizz)
+    - [2](reponse_quizz)
+    - [trois](reponse_quizz)
+    - [3](reponse_quizz)
+    - [quatre](reponse_quizz)
+    - [4](reponse_quizz)
+    - réponse [un](reponse_quizz)
+    - réponse [1](reponse_quizz)
+    - réponse [deux](reponse_quizz)
+    - réponse [2](reponse_quizz)
+    - réponse [trois](reponse_quizz)
+    - réponse [3](reponse_quizz)
+    - réponse [quatre](reponse_quizz)
+    - réponse [4](reponse_quizz)
