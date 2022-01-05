@@ -1,8 +1,0 @@
-version: "2.0"
-nlu:
-- intent: demande_salle_disponible_avec_debut
-  examples: |
-    - Je voudrais la liste des salles disponibles à partir de [11 heures](debut)
-- intent: demande_salle_disponible_avec_duree
-  examples: |
-    - Queles sont les salles disponible pour une durée de [1h30](durree) ?

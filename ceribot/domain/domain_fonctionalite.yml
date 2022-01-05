@@ -1,5 +1,0 @@
-intents:
-  - demande_fonctionalite
-
-actions: 
-- action_fonctionalite

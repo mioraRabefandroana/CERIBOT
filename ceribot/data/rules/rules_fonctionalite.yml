@@ -1,7 +1,0 @@
-version: "2.0"
-
-rules:
-- rule: citer les fonctionalités disponible
-  steps:
-  - intent: demande_fonctionalite
-  - action: action_fonctionalite
