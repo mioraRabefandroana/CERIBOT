@@ -1,0 +1,9 @@
+stories:
+- story: faire un quizz
+  steps:
+  - intent: demarre_quizz
+  - action: get_quizz
+  - intent: repondre_quizz
+    entities:
+    - reponse_quizz: un
+  - action: submit_quizz

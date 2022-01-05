@@ -1,0 +1,173 @@
+version: "2.0"
+
+nlu:
+
+- intent: demande_emploie_du_temps
+  examples: |
+    - pouvez-vous me donner mon emploi du temps ?
+    - donne moi l'horaire de ma section.
+    - qu'est-ce qui vient ensuite ?
+    - qu'est-ce que j'ai maintenant ?
+    - quel est l'horaire ?
+    - calendrier
+    - donne mon emploie du temps
+    - emploie du temps
+    - donne moi l'emploie du temps.
+
+- intent: donner_niveau_formation
+  examples: |
+    - je suis en [M1](niveau)
+    - [M1](niveau)
+    - ma formation est [M1](niveau)
+    - je suis inscrit en [M1](niveau)
+    - je suis inscrit en [master 1](niveau)
+    - je suis en [M2](niveau)
+    - je suis en [master 2](niveau)
+    - [M2](niveau)
+    - ma formation est [M2](niveau)
+    - je suis inscrit en [M2](niveau)
+    - je suis en [L3](niveau)
+    - je suis en [licence 3](niveau)
+    - [L3](niveau)
+    - [licence 3](niveau)
+    - ma formation est [L3](niveau)    
+    - ma formation est [licence 3](niveau)
+    - je suis inscrit en [L3](niveau)
+    - je suis en [L2](niveau)
+    - je suis en [licence 2](niveau)
+    - [L2](niveau)
+    - ma formation est [L2](niveau)
+    - je suis inscrit en [L2](niveau)
+    - je suis inscrit en [licence 2](niveau)
+    - je suis en [L1](niveau)
+    - je suis en [licence 1](niveau)
+    - [L1](niveau)
+    - [licence 1](niveau)
+    - ma formation est [L1](niveau)
+    - je suis inscrit en [L1](niveau)
+    - je suis en [hdr](niveau)
+    - [hdr](niveau)
+    - ma formation est [hdr](niveau)
+    - je suis inscrit en [hdr](niveau)
+    - je suis en [l1a1 allure 1 an](niveau)
+    - [l1a1 allure 1 an](niveau)
+    - ma formation est [l1a1 allure 1 an](niveau)
+    - je suis inscrit en [l1a1 allure 1 an](niveau)
+    - je suis en [la1 allure 1](niveau)
+    - [la1 allure 1](niveau)
+    - ma formation est [la1 allure 1](niveau)
+    - je suis inscrit en [la1 allure 1](niveau)
+    - je suis en [la2 allure 2](niveau)
+    - [la2 allure 2](niveau)
+    - ma formation est [la2 allure 2](niveau)
+    - je suis inscrit en [la2 allure 2](niveau)
+    - je suis en [l1 acces](niveau)
+    - [l1 acces](niveau)
+    - ma formation est [l1 acces](niveau)
+    - ma formation est [licence 1 acces](niveau)
+    - je suis inscrit en [l1 acces](niveau)
+    - je suis inscrit en [licence 1 acces](niveau)
+
+- intent: donner_formation
+  examples: |
+    - [ILSEN](formation)
+    - [ilsen](formation)
+    - je suis en [ilsen](formation)
+    - je fais [ilsen](formation)
+    - [SICOM](formation)
+    - [sicom](formation)
+    - je suis en [sicom](formation)
+    - je fais [sicom](formation)
+    - [IA](formation)
+    - [ia](formation)
+    - je suis en [ia](formation)
+    - je fais [ia](formation)
+    - [informatique](formation)
+    - je suis en [informatique](formation)
+    - je fais [informatique](formation)
+    - [systemes informatiques communicants](formation)
+    - [intelligence artificielle](formation)
+    - [inge du logiciel de la societe num](formation)
+
+- intent: donner_option
+  examples: |
+    - [classique](option)
+    - je suis [classique](option)
+    - [alternant](option)
+    - je suis [alternant](option)
+    - [appli 1](option)
+    - je fais l'[appli 1](option)
+    - [appli 2](option)
+    - je fais l'[appli 2](option)
+    - [appli 3](option)
+    - je fais l'[appli 3](option)
+    - [appli 4](option)
+    - je fais l'[appli 4](option)
+
+
+- intent: donner_niveau_formation_et_formation
+  examples: |
+    - je suis en [M1](niveau) [ilsen](formation)
+    - [M1](niveau) [ilsen](formation)
+    - ma formation est [M1](niveau) [sicom](formation)
+    - je suis inscrit en [M1](niveau)
+    - je suis en [M2](niveau) [ia](formation)
+    - [M2](niveau) [intelligence artificielle](formation)
+    - ma formation est [M2](niveau) [intelligence artificielle](formation)
+    - je suis inscrit en [M2](niveau) [intelligence artificielle](formation)
+    - je suis en [L3](niveau) [informatique](formation)
+    - [L3](niveau) [informatique](formation)
+    - ma formation est [L3](niveau) [informatique](formation)
+    - je suis inscrit en [L3](niveau) [informatique](formation)
+    - je suis en [L2](niveau) [informatique](formation)
+    - [L2](niveau) [informatique](formation)
+    - ma formation est [L2](niveau) [informatique](formation)
+    - je suis inscrit en [L2](niveau) [informatique](formation)
+    - je suis en [L1](niveau) [informatique](formation)
+    - [L1](niveau) [informatique](formation)
+    - ma formation est [L1](niveau) [informatique](formation)
+    - je suis inscrit en [L1](niveau) [informatique](formation)
+
+- intent : demande_edt_avec_informations_complet
+  examples: |
+    - je voudrais l'emploi du temps du [m1](niveau) [ilsen](formation)
+    - je voudrais l'emploi du temps du [master 1](niveau) [ingénieurie logiciel](formation)
+    - je voudrais l'emploi du temps du [m2](niveau) [ilsen](formation)
+    - je voudrais l'emploi du temps du [master 2](niveau) [ingénieurie logiciel](formation)
+    - je voudrais l'emploi du temps du [master 2](niveau) [ilsen](formation)
+    - je voudrais l'emploi du temps du [m1](niveau) [ilsen](formation)
+    - je voudrais l'emploi du temps du [master 1](niveau) [inge du logiciel de la societe num(formation)
+    - je voudrais l'emploi du temps du [m2](niveau) [inge du logiciel de la societe num](formation)
+    - je voudrais l'emploi du temps du [master 2](niveau) [inge du logiciel de la societe num](formation)
+    - je voudrais l'emploi du temps du [master 1](niveau) [sicom](formation)
+    - je voudrais l'emploi du temps du [master 2](niveau) [sicom](formation)
+    - je voudrais l'emploi du temps du [m1](niveau) [sicom](formation)
+    - je voudrais l'emploi du temps du [m2](niveau) [sicom](formation)
+    - je voudrais l'emploi du temps du [master 1](niveau) [systemes informatiques communicants](formation)
+    - je voudrais l'emploi du temps du [master 2](niveau) [systemes informatiques communicants](formation)
+    - je voudrais l'emploi du temps du [m1](niveau) [systemes informatiques communicants](formation)
+    - je voudrais l'emploi du temps du [m2](niveau) [systemes informatiques communicants](formation)
+    - je voudrais l'emploi du temps du [l1a1 allure 1](niveau) [informatique](formation)
+    - je voudrais l'emploi du temps du [l1a1 allure 2](niveau) [informatique](formation)
+    - je souhaiterai connaître l'emploi du temps de la [m2](niveau) [intelligence artificielle](formation)
+    - je souhaiterai connaître l'emploi du temps de la [master 2](niveau) [ia](formation)
+    - je souhaiterai connaître l'emploi du temps de la [m1](niveau) [intelligence artificielle](formation)
+    - je souhaiterai connaître l'emploi du temps de la [master 2](niveau) [ia](formation)
+    - je souhaiterai connaître l'emploi du temps de la [licence 2](niveau) [informatique](formation)
+    - je souhaiterai connaître l'emploi du temps de la [l2](niveau) [informatique](formation)
+    - peut tu me mmontrer l'emploi du temps de la [l1](niveau) [informatique](formation) s'il te plaît
+    - peut tu me mmontrer l'emploi du temps de la [licence 1](niveau) [informatique](formation) s'il te plaît
+    - peut tu me mmontrer l'emploi du temps de la [l2](niveau) [informatique](formation) s'il te plaît
+    - peut tu me mmontrer l'emploi du temps de la [licence 2](niveau) [informatique](formation) s'il te plaît
+    - peut tu me mmontrer l'emploi du temps de la [l3](niveau) [informatique](formation) s'il te plaît
+    - peut tu me mmontrer l'emploi du temps de la [licence 3](niveau) [informatique](formation) s'il te plaît
+
+# TODO
+# Déroulement de la demande complet d'edt à peper
+# 1.
+# -> s'il n'y a pas de date (ou aujourd'hui) => utiliser celle d'aujourd'hui
+# -> s'il y a une date donnée -> lui poser la question de donner la date précise (? quelle est la date précise pour l'emploi du temps)
+# 2.
+# -> Essayer de gérer les options : au moins CLASSIQUE et ALTERNANCE
+# -----> Demander les options s'il y en a plusieurs
+

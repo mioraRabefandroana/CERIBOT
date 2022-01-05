@@ -1,0 +1,16 @@
+
+intents:
+  - demarre_quizz
+  - repondre_quizz
+actions: 
+- get_quizz
+- submit_quizz
+
+entities:
+- reponse_quizz
+
+slots:
+  reponse_quizz:
+    type: text
+  quizz:
+    type: text
