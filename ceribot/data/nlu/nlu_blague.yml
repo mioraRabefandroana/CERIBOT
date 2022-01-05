@@ -1,0 +1,13 @@
+nlu:
+- intent: raconte_blague
+  examples: |
+    - raconte moi une blague
+    - dit moi quelque chose de drôle
+    - fait moi rire
+    - une blague s'il te plaît
+    - raconte moi des bobard
+    - a joke please
+    - blague
+    - un truc drôle
+    - peux tu me faire rigoler?
+  

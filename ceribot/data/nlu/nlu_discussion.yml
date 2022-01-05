@@ -1,0 +1,99 @@
+version: "2.0"
+
+nlu:
+- intent: salutation
+  examples: |
+    - salut
+    - bonjour
+    - bonsoir
+    - hello
+    - hey
+    - salut pepper
+    - hey pepper
+    - pepper ça va ?
+    - quoi de neuf pepper ?
+    - ça roule pepper ?
+    - salutation pepper
+    - dis moi pepper
+    - chao pepper
+
+- intent: aurevoir
+  examples: |
+    - bonsoir
+    - aurevoir
+    - bye bye
+    - on se capte
+    - bonne nuit
+    - bonne fin de journée
+    - bonne fin de soirée
+    - passe une bonne journée
+    - on se dit à tout à l'heur
+    - on se voit plustard
+    - à toute
+    - ok à toute
+
+- intent: affirmation
+  examples: |
+    - oui
+    - ok
+    - biensûr
+    - evidemment
+    - ça sonne bien
+    - c'est bien cela
+    - ça me convient
+    - ça me va bien
+    - ok ok
+    - d'accord
+    - ouais
+    - humm ok
+
+- intent: negation
+  examples: |
+    - non
+    - non non
+    - jamais
+    - je ne pense pas
+    - ça ne me plaît pas
+    - impossible
+    - pas vraiment
+
+- intent: bonne_humeur
+  examples: |
+    - parfait
+    - génial
+    - fantastique
+    - je me sens comme un roi
+    - magnifique
+    - je me sens bien
+    - je vais bien
+    - je suis géniale
+    - je vais sauver le monde
+    - je suis superman
+    - très bien
+    - trop parfait
+    - trop bien
+    - bien
+
+- intent: mauvaise_humeur
+  examples: |
+    - ma journée était horrible
+    - je suis triste
+    - je ne me sens pas bien
+    - je suis déçu
+    - très triste
+    - je me sens mal
+    - mal
+    - très triste
+    - malheureux
+    - pas bien
+    - pas très bien
+    - extrèmement triste
+    - trop triste
+    - mal mal et mal
+
+- intent: bot_challenge
+  examples: |
+    - est-tu un bot ?
+    - est-tu un humain ?
+    - suis-je entrain de parler à un bot ?
+    - suis-je entrain de parler à un humain ?
