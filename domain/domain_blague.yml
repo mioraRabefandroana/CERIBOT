@@ -1,0 +1,10 @@
+intents:
+  - raconte_blague
+  - intent_test_duckling
+
+actions: 
+- action_blague
+
+
+entities:
+  - time
