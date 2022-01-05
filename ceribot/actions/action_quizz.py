@@ -30,7 +30,7 @@ class ActionGetQuizz(Action):
 
         for i,choice in enumerate(choices):
             html += "<div class='quizz-choice'>{0} - {1}</div>".format( (i+1), choice )
-            msg += "{0} : {1},\n".format( i, choice )
+            msg += "{0} : {1},\n".format( (i+1), choice )
 
         html += "<div class='quizz-notice'>{0}</div>".format( QUIZZ_NOTICE.replace(",", "") )
 
@@ -78,17 +78,18 @@ class ActionSubmitQuizz(Action):
         html += "<h2 class='quizz-question'>{0}</h2>".format( question )
 
         choices = quizz.get("choix")
-        msg += QUIZZ_NOTICE
 
         formatedUserAnswer = self.quizzResult.get("proposer")
         for i,choice in enumerate(choices):
             className = ""
             if(int(i+1) == int(quizz.get("reponse"))):
-                className = "correct-answer"
+                className = "style='{color: green}'"
+                
 
             if not isCorrect and (int(i+1) == formatedUserAnswer):
-                className = "wrong-answer"
-            html += "<div class='quizz-choice {0}'>{1} - {2}</div>".format( className, (i+1), choice )
+                className = "style='{color: red}'"
+            #html += "<div class='quizz-choice {0}'>{1} - {2}</div>".format( className, (i+1), choice )
+            html += "<div {0}>{1} - {2}</div>".format( className, (i+1), choice )
 
         html = to_html( html )
 
